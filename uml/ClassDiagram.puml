@@ -52,8 +52,14 @@ note right of Activity::verb
   e.g., "napping"
 end note
 
+class Schedule {
+  - steps: List<Activity>
+}
+
 Dog ..|> Pet
 Cat ..|> Pet
 Dog --> DogBreed
 Daycare --> Pet
+Schedule --> Activity
+Schedule ..|> Iterable
 @enduml
