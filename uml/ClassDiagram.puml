@@ -1,39 +1,49 @@
 @startuml
-interface Pet {
-  + name: String
-  + play(): Unit
+together {
+    interface Pet {
+      + name: String
+      + play(): Unit
+    }
+
+    class Dog {
+      + name: String
+      - breed: DogBreed
+      + play(): Unit
+    }
+    note right of Dog::play
+      prints...
+      - schnauzers: "roo-roo"
+      - shepherds: "ruff!"
+      - doodles: "woof!"
+    end note
+
+    enum DogBreed {
+      MINIATURE_SCHNAUZER
+      GERMAN_SHEPHERD
+      GOLDEN_DOODLE
+    }
+
+    class Cat {
+      + name: String
+      + play(): Unit
+    }
+    note right of Cat::play
+      prints "Meow!"
+    end note
 }
 
-class Dog {
-  + name: String
-  - breed: DogBreed
-  + play(): Unit
+class Daycare {
+  - roster: Set<Pet>
+  + register(pet: Pet)
+  + unregister(pet: Pet)
+  + contains(pet: Pet)
 }
-note right of Dog::play
-  prints...
-  - schnauzers: "roo-roo"
-  - shepherds: "ruff!"
-  - doodles: "woof!"
+note right of Daycare::contains
+  operator fun
 end note
-
-
-enum DogBreed {
-  MINIATURE_SCHNAUZER
-  GERMAN_SHEPHERD
-  GOLDEN_DOODLE
-}
-
-class Cat {
-  + name: String
-  + play(): Unit
-}
-note right of Cat::play
-  prints "Meow!"
-end note
-
-}
 
 Dog ..|> Pet
 Cat ..|> Pet
 Dog --> DogBreed
+Daycare --> Pet
 @enduml
