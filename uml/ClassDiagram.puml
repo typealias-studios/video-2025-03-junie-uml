@@ -42,6 +42,16 @@ note right of Daycare::contains
   operator fun
 end note
 
+enum Activity {
+  PLAY
+  EAT
+  NAP
+  + verb: String
+}
+note right of Activity::verb
+  e.g., "napping"
+end note
+
 Dog ..|> Pet
 Cat ..|> Pet
 Dog --> DogBreed
