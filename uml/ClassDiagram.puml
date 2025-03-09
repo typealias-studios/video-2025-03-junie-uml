@@ -56,10 +56,20 @@ class Schedule {
   - steps: List<Activity>
 }
 
+class Session {
+  - dayCare: Daycare
+  - attendance: Set<Pet>
+  + schedule: Schedule
+  + onArrived(pet: Pet)
+  + onDeparted(pet: Pet)
+}
+
 Dog ..|> Pet
 Cat ..|> Pet
 Dog --> DogBreed
 Daycare --> Pet
 Schedule --> Activity
 Schedule ..|> Iterable
+Session --> Daycare
+Session --> Schedule
 @enduml
