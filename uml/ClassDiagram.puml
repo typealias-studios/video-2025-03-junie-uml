@@ -1,0 +1,39 @@
+@startuml
+interface Pet {
+  + name: String
+  + play(): Unit
+}
+
+class Dog {
+  + name: String
+  - breed: DogBreed
+  + play(): Unit
+}
+note right of Dog::play
+  prints...
+  - schnauzers: "roo-roo"
+  - shepherds: "ruff!"
+  - doodles: "woof!"
+end note
+
+
+enum DogBreed {
+  MINIATURE_SCHNAUZER
+  GERMAN_SHEPHERD
+  GOLDEN_DOODLE
+}
+
+class Cat {
+  + name: String
+  + play(): Unit
+}
+note right of Cat::play
+  prints "Meow!"
+end note
+
+}
+
+Dog ..|> Pet
+Cat ..|> Pet
+Dog --> DogBreed
+@enduml
