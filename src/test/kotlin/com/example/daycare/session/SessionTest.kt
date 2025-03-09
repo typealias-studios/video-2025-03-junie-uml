@@ -2,6 +2,7 @@ package com.example.daycare.session
 
 import com.example.daycare.Activity
 import com.example.daycare.Daycare
+import com.example.daycare.exceptions.NotRegisteredException
 import com.example.daycare.pets.Pet
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -20,7 +21,7 @@ class SessionTest {
 
     @Test
     fun `unregistered pet cannot arrive`() {
-        assertThrows<IllegalArgumentException> {
+        assertThrows<NotRegisteredException> {
             session.onArrived(pet)
         }
     }

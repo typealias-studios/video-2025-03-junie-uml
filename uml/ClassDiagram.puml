@@ -64,6 +64,10 @@ class Session {
   + onDeparted(pet: Pet)
   + runSchedule()
 }
+note right of Session::onArrived
+  Throws `NotRegisteredException` when
+  pet is not a member of the daycare.
+end note
 
 Dog ..|> Pet
 Cat ..|> Pet
