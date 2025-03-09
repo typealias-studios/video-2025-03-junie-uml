@@ -1,0 +1,22 @@
+@startuml
+participant Session
+participant Schedule
+
+loop Schedule.hasNext()
+
+    Session -> Schedule: next()
+    return activity = result
+
+    loop pet in attendance
+
+        note over Session
+          Prints pet and activity
+          e.g., "Fido is napping"
+          When activity is PLAY then
+          also calls `play()` on the pet.
+        end note
+
+    end
+
+end
+@enduml
